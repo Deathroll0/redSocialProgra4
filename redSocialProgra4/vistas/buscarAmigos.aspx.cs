@@ -29,7 +29,7 @@ namespace redSocialProgra4.vistas
                 }
                 else
                 {
-                    Response.Write("mensaje");
+                    Response.Write(Session["mensaje"]);
                     Session.Remove("mensaje");
                 }
             }

@@ -145,6 +145,8 @@ namespace redSocialProgra4.modelos
             }
             return lista;
         }
+
+
         //busca todos los amigos del usuario logeado
         public List<Usuario> buscaTodosAmigos(string correo)
         {
@@ -154,7 +156,7 @@ namespace redSocialProgra4.modelos
             {
                 con.abreConexion();
                 MySqlCommand comando = new MySqlCommand();
-                comando.CommandText = "SELECT * FROM usuarios WHERE correo=" + correo + "";
+                comando.CommandText = "SELECT usuarios.nombre, usuarios.apellido, usuarios.correo from usuarios INNER JOIN amigos ON usuarios.correo=amigos.usuario1 WHERE correo='"+correo+"'";
                 comando.Connection = con.usaConexion();
                 MySqlDataReader reader = comando.ExecuteReader();
                 while (reader.Read())
@@ -162,8 +164,7 @@ namespace redSocialProgra4.modelos
                     Usuario u2 = new Usuario();
                     u2.correo = reader[0].ToString();
                     u2.Nombre = reader[1].ToString();
-                    u2.Apellido = reader[2].ToString();
-                    u2.clave = reader[3].ToString();
+                    u2.Apellido = reader[2].ToString();                    
                     lista.Add(u2);
                 }
             }
@@ -173,6 +174,36 @@ namespace redSocialProgra4.modelos
             }
             return lista;
         }
+
+        //buscar todos los amigos en la tabla amigos
+        public List<Usuario> buscaTodosTablaAmigos(string correo)
+        {
+            Conexion con = Conexion.Instance();
+            List<Usuario> lista = new List<Usuario>();
+            try
+            {
+                con.abreConexion();
+                MySqlCommand comando = new MySqlCommand();
+                comando.CommandText = "SELECT * from amigos WHERE usuario1='" + correo + "' or usuario2='"+correo+"'";
+                comando.Connection = con.usaConexion();
+                MySqlDataReader reader = comando.ExecuteReader();
+                while (reader.Read())
+                {
+                    Usuario u2 = new Usuario();
+                    u2.correo = reader[0].ToString();
+                    u2.Nombre = reader[1].ToString();//en este caso el nombre de la lista, sera el correo de la segunda columna
+                    lista.Add(u2);
+                }
+            }
+            finally
+            {
+                con.cierraConexion();
+            }
+            return lista;
+        }
+
+
+
 
     }
 

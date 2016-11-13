@@ -138,7 +138,33 @@ namespace redSocialProgra4.controladores
                 }
             }
         }
-
+        public List<Usuario> buscaTodosAmigos(string correo)
+        {
+            Usuario u = new Usuario();
+            List<Usuario> lista = u.buscaTodosTablaAmigos(correo);//aca tengo la lista con los dos correos
+            //ahora hay que comparar ambas posiciones y ver cual es el correo diferente.
+            List<string> correoAmigos = new List<string>();
+            for (int i = 0; i < lista.Count; i++)
+            {
+                if (correo.Equals(lista[i].Correo))//pregunto si el primer correo (usuario1 de la tabla amigos) coincide con la session, si es asi significa que el otro es el correo del amigo.
+                {
+                    correoAmigos.Add(lista[i].Nombre);//en el metodo de busqueda el segundo correo (de usuario2 de la tabla amigos) se guardo en nombre.
+                }
+                else//si no coinciden con la posicion 0, significa que la posicion 0 es el correo del amigo.
+                {
+                    correoAmigos.Add(lista[i].Correo);
+                }
+            }
+            //ahora tengo una lista con todos los correos de los amigos, simplemente creo una lista 2 donde busco cada uno y se imprime.7
+            List<Usuario> listaAmigos = new List<Usuario>();
+            for (int i = 0; i < correoAmigos.Count; i++)
+            {
+                Usuario u3 = u.buscaUno(correoAmigos[i]);
+                listaAmigos.Add(u3);
+            }
+            //ahora se recorre la lista con los amigos completos y se imprime
+            return listaAmigos;
+        }
 
     }
 

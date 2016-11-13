@@ -85,6 +85,7 @@
     <Content Include="vistas\buscarAmigos.aspx" />
     <Content Include="vistas\index.aspx" />
     <Content Include="vistas\loginRegistrar.aspx" />
+    <Content Include="vistas\mostrarTodoAmigos.aspx" />
     <Content Include="vistas\perfilPersona.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -134,6 +135,13 @@
     </Compile>
     <Compile Include="vistas\loginRegistrar.aspx.designer.cs">
       <DependentUpon>loginRegistrar.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="vistas\mostrarTodoAmigos.aspx.cs">
+      <DependentUpon>mostrarTodoAmigos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="vistas\mostrarTodoAmigos.aspx.designer.cs">
+      <DependentUpon>mostrarTodoAmigos.aspx</DependentUpon>
     </Compile>
     <Compile Include="vistas\perfilPersona.aspx.cs">
       <DependentUpon>perfilPersona.aspx</DependentUpon>
