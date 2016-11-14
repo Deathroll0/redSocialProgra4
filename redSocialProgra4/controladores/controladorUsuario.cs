@@ -138,6 +138,7 @@ namespace redSocialProgra4.controladores
                 }
             }
         }
+
         public List<Usuario> buscaTodosAmigos(string correo)
         {
             Usuario u = new Usuario();
@@ -165,6 +166,21 @@ namespace redSocialProgra4.controladores
             //ahora se recorre la lista con los amigos completos y se imprime
             return listaAmigos;
         }
+
+        public bool sonAmigos(string correoSesion, string correoPerfil)
+        {
+            Usuario u = new Usuario();
+            string mensaje = u.sonAmigos(correoSesion, correoPerfil);
+            if (mensaje.Equals("Son Amigos"))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
 
     }
 

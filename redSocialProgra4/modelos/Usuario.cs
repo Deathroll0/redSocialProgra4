@@ -147,33 +147,33 @@ namespace redSocialProgra4.modelos
         }
 
 
-        //busca todos los amigos del usuario logeado
-        public List<Usuario> buscaTodosAmigos(string correo)
-        {
-            Conexion con = Conexion.Instance();
-            List<Usuario> lista = new List<Usuario>();
-            try
-            {
-                con.abreConexion();
-                MySqlCommand comando = new MySqlCommand();
-                comando.CommandText = "SELECT usuarios.nombre, usuarios.apellido, usuarios.correo from usuarios INNER JOIN amigos ON usuarios.correo=amigos.usuario1 WHERE correo='"+correo+"'";
-                comando.Connection = con.usaConexion();
-                MySqlDataReader reader = comando.ExecuteReader();
-                while (reader.Read())
-                {
-                    Usuario u2 = new Usuario();
-                    u2.correo = reader[0].ToString();
-                    u2.Nombre = reader[1].ToString();
-                    u2.Apellido = reader[2].ToString();                    
-                    lista.Add(u2);
-                }
-            }
-            finally
-            {
-                con.cierraConexion();
-            }
-            return lista;
-        }
+        ////busca todos los amigos del usuario logeado
+        //public List<Usuario> buscaTodosAmigos(string correo)
+        //{
+        //    Conexion con = Conexion.Instance();
+        //    List<Usuario> lista = new List<Usuario>();
+        //    try
+        //    {
+        //        con.abreConexion();
+        //        MySqlCommand comando = new MySqlCommand();
+        //        comando.CommandText = "SELECT usuarios.nombre, usuarios.apellido, usuarios.correo from usuarios INNER JOIN amigos ON usuarios.correo=amigos.usuario1 WHERE correo='"+correo+"'";
+        //        comando.Connection = con.usaConexion();
+        //        MySqlDataReader reader = comando.ExecuteReader();
+        //        while (reader.Read())
+        //        {
+        //            Usuario u2 = new Usuario();
+        //            u2.correo = reader[0].ToString();
+        //            u2.Nombre = reader[1].ToString();
+        //            u2.Apellido = reader[2].ToString();                    
+        //            lista.Add(u2);
+        //        
+        //    }
+        //    finally
+        //    {
+        //        con.cierraConexion();
+        //    }
+        //    return lista;
+        //}
 
         //buscar todos los amigos en la tabla amigos
         public List<Usuario> buscaTodosTablaAmigos(string correo)
@@ -202,6 +202,28 @@ namespace redSocialProgra4.modelos
             return lista;
         }
 
+       public string sonAmigos(string correoSession, string correoPerfil)
+        {
+            Conexion con = Conexion.Instance();
+            string mensaje = "No Son Amigos";
+            try
+            {
+                con.abreConexion();
+                MySqlCommand comando = new MySqlCommand();
+                comando.CommandText = "SELECT * from amigos where (usuario1='"+correoSession+ "' or usuario2='"+correoSession+"') and (usuario1='"+correoPerfil+ "' or usuario2='"+correoPerfil+"')";
+                comando.Connection = con.usaConexion();
+                MySqlDataReader reader = comando.ExecuteReader();
+                while (reader.Read())
+                {
+                    mensaje = "Son Amigos";
+                }
+            }
+            finally
+            {
+                con.cierraConexion();
+            }
+            return mensaje;
+        }
 
 
 

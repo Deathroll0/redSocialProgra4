@@ -12,7 +12,8 @@
     <div>
         Buscar amigos: <asp:TextBox ID="TxtNombre" runat="server"></asp:TextBox><br />
         <asp:Button ID="Button1" runat="server" Text="buscar" PostBackUrl="../validadores/validaBuscarAmigos.aspx" /><br />
-        <a href="mostrarTodoAmigos.aspx">Amigos</a>
+        <a href="mostrarTodoAmigos.aspx">Amigos</a><br />
+        <a href="miMuro.aspx">Test de muro</a>
     </div>
     </form>
 </body>
