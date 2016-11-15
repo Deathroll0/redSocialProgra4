@@ -141,5 +141,34 @@ namespace redSocialProgra4.modelos
             return lista;
         
     }
+
+        public bool posteo(Post p)
+        {
+            Conexion con = Conexion.Instance();
+            String fecha = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
+            //p.Fecha = fecha;
+
+            try
+            {
+                con.abreConexion();
+                MySqlCommand comando = new MySqlCommand();
+                comando.CommandText = "INSERT INTO post VALUES('"+fecha+"', '"+p.Texto+"','"+p.Creador+"','"+p.Receptor+"',"+p.TipoPost+")";
+                comando.Connection = con.usaConexion();
+                if (comando.ExecuteNonQuery() > 0)
+                    return true;
+                else
+                    return false;
+            }
+            catch
+            {
+                return false;
+            }
+            finally
+            {
+                con.cierraConexion();
+            }
+        }
+
+
     }
 }

@@ -30,5 +30,17 @@ namespace redSocialProgra4.controladores
             }
             return lista;
         }
+
+        public bool validaTexto(string texto)
+        {
+            if (texto=="")
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
     }
 }

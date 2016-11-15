@@ -37,6 +37,7 @@ namespace redSocialProgra4.vistas
                         Response.Write("<tr><td><a href='perfilPersona.aspx?correo=" + lista[i].Creador + "'>" + lista[i].NombreCreador + "</a></td><td>" + lista[i].Texto + "</td><td>" + lista[i].Fecha + "</td></tr>");
                     }
                     Response.Write("</table>");
+                    Response.Write("<textarea id='txtArea' name='txtArea' cols='20' rows='2'></textarea><br /><button>enviar</button>");
                 }
             }
             else

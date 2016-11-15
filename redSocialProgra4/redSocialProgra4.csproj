@@ -81,6 +81,8 @@
   <ItemGroup>
     <Content Include="validadores\validaBuscarAmigos.aspx" />
     <Content Include="validadores\validaLogin.aspx" />
+    <Content Include="validadores\validaPosteoActualizacion.aspx" />
+    <Content Include="validadores\validaPosteoComentario.aspx" />
     <Content Include="validadores\validaRegistrar.aspx" />
     <Content Include="vistas\buscarAmigos.aspx" />
     <Content Include="vistas\index.aspx" />
@@ -110,6 +112,20 @@
     </Compile>
     <Compile Include="validadores\validaLogin.aspx.designer.cs">
       <DependentUpon>validaLogin.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="validadores\validaPosteoActualizacion.aspx.cs">
+      <DependentUpon>validaPosteoActualizacion.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="validadores\validaPosteoActualizacion.aspx.designer.cs">
+      <DependentUpon>validaPosteoActualizacion.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="validadores\validaPosteoComentario.aspx.cs">
+      <DependentUpon>validaPosteoComentario.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="validadores\validaPosteoComentario.aspx.designer.cs">
+      <DependentUpon>validaPosteoComentario.aspx</DependentUpon>
     </Compile>
     <Compile Include="validadores\validaRegistrar.aspx.cs">
       <DependentUpon>validaRegistrar.aspx</DependentUpon>

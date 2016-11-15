@@ -13,10 +13,17 @@ namespace redSocialProgra4.vistas
         {
             if (Session["correo"] != null)
             {
-                string correo = Session["correo"].ToString();
-                string nombre = Session["nombre"].ToString();
-                string apellido = Session["apellido"].ToString();
-                Response.Write("<h1>Bienvenido " + nombre + " " + apellido + "</h1>");
+                if (Session["mensaje"]!=null)
+                {
+                    string correo = Session["correo"].ToString();
+                    string nombre = Session["nombre"].ToString();
+                    string apellido = Session["apellido"].ToString();
+                    Response.Write("<h1>Bienvenido " + nombre + " " + apellido + "</h1>");
+                    Response.Write(Session["mensaje"]);
+                    Session.Remove("mensaje");
+                }
+                
+
             }
             else
             {
