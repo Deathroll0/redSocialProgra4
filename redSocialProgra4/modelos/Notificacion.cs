@@ -93,14 +93,14 @@ namespace redSocialProgra4.modelos
             }
         }
 
-        public bool vistoUpdate()
+        public bool vistoUpdate(int idNotificacion)
         {
             Conexion con = Conexion.Instance();
             try
             {
                 con.abreConexion();
                 MySqlCommand comando = new MySqlCommand();
-                comando.CommandText = "UPDATE notificaciones SET visto='1'";
+                comando.CommandText = "UPDATE notificaciones SET visto='1' where idnotificacion='"+idNotificacion+"'";
                 comando.Connection = con.usaConexion();
                 if (comando.ExecuteNonQuery() > 0)
                     return true;
@@ -174,6 +174,50 @@ namespace redSocialProgra4.modelos
 
 
         }
+
+
+
+        public bool actualizarTodoVisto(List<Notificacion> lista, string correo)
+        {
+            int contador = 0;
+            Conexion con = Conexion.Instance();
+            for (int i = 0; i < lista.Count; i++)
+            {
+                try
+                {
+                    con.abreConexion();
+                    MySqlCommand comando = new MySqlCommand();
+                    comando.CommandText = "UPDATE notificaciones SET visto='1' where idnotificacion='" + lista[i].IdNotificacion + "'";//0 no visto 1 visto
+                    comando.Connection = con.usaConexion();
+                    if (comando.ExecuteNonQuery() > 0)
+                        contador++;
+                }
+                catch
+                {
+
+                }
+                finally
+                {
+                    con.cierraConexion();
+                }
+            }
+
+            if (contador == lista.Count)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+
+        }
+
+
+
+
+
+
+
     }
-}
 }
