@@ -152,7 +152,7 @@ namespace redSocialProgra4.modelos
             {
                 con.abreConexion();
                 MySqlCommand comando = new MySqlCommand();
-                comando.CommandText = "INSERT INTO post VALUES('"+fecha+"', '"+p.Texto+"','"+p.Creador+"','"+p.Receptor+"',"+p.TipoPost+")";
+                comando.CommandText = "INSERT INTO post VALUES('','"+fecha+"', '"+p.Texto+"','"+p.Creador+"','"+p.Receptor+"',"+p.TipoPost+")";
                 comando.Connection = con.usaConexion();
                 if (comando.ExecuteNonQuery() > 0)
                     return true;

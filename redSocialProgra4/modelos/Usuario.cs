@@ -202,10 +202,11 @@ namespace redSocialProgra4.modelos
             return lista;
         }
 
-       public string sonAmigos(string correoSession, string correoPerfil)
+       public bool sonAmigos(string correoSession, string correoPerfil)
         {
             Conexion con = Conexion.Instance();
-            string mensaje = "No Son Amigos";
+            bool bandera = false;
+           // string mensaje = "No Son Amigos";
             try
             {
                 con.abreConexion();
@@ -215,14 +216,14 @@ namespace redSocialProgra4.modelos
                 MySqlDataReader reader = comando.ExecuteReader();
                 while (reader.Read())
                 {
-                    mensaje = "Son Amigos";
+                    bandera=true;
                 }
             }
             finally
             {
                 con.cierraConexion();
             }
-            return mensaje;
+            return bandera;
         }
 
 
