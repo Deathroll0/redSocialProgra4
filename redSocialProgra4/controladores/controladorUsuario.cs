@@ -170,8 +170,7 @@ namespace redSocialProgra4.controladores
         public bool sonAmigos(string correoSesion, string correoPerfil)
         {
             Usuario u = new Usuario();
-            string mensaje = u.sonAmigos(correoSesion, correoPerfil);
-            if (mensaje.Equals("Son Amigos"))
+            if (u.sonAmigos(correoSesion, correoPerfil))
             {
                 return true;
             }
